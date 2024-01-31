@@ -48,3 +48,14 @@ This approach allows for significant scaling of the number of experts while keep
 The model can be efficiently sharded using techniques like data parallelism, model parallelism, or a combination of both. Data parallelism involves distributing data to different cores, while model parallelism splits the model across cores. Switch transformer employs expert and data parallelism, where each expert processes specific data independently, minimizing communication costs and achieving scalable training.
 
 The paper further discusses various sharding techniques, illustrating how model and data parallelism can be combined for efficient distributed training. It emphasizes the advantages of expert and data parallelism in the switch transformer, enabling the model to handle a large number of parameters while maintaining computational efficiency.
+
+## Experimental Results
+
+The results of the switch transformer are compared to T5 base and T5 large models, showcasing the switch model's significantly higher number of parameters (7 billion and 26 billion) compared to T5 large (less than a billion). Importantly, the number of floating-point operations per forward pass (flops) is matched for a fair comparison.
+
+![performance](./images/performance.png)
+The switch transformer demonstrates remarkable improvements in speed and sample efficiency over dense models, even with the same amount of compute per forward propagation. Benchmarks on multilingual datasets reveal consistent gains in both time and the number of training steps across various languages.
+![scaling](./images/scaling.png)
+
+![multilingual](images/multilingual.png)
+While the trade-off for these gains involves the need for more machines, the largest model, Switch XXL, surpasses T5 XXXL in log perplexity and downstream tasks with more parameters and equivalent flops. Additionally, a trillion-parameter model is constructed, showing competitive performance with T5 XXXL despite fewer flops per token. However, it falls short of the Switch XXL model, emphasizing the importance of balancing parameters, heads, and layers for optimal performance. The paper concludes that having a vast number of parameters alone is not sufficient; thoughtful trade-offs are essential for achieving superior results in large language models.
