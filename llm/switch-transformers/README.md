@@ -74,8 +74,10 @@ Proper initialization is vital for successful training in deep learning, especia
 The paper addresses overfitting challenges during fine-tuning in natural language processing tasks, particularly with Switch Transformers having significantly more parameters than baseline models. To mitigate overfitting, the authors propose "**expert dropout**," an approach involving increased dropout rates specifically within the experts' interim feed-forward computations. Unlike uniform dropout increases across all layers, a strategic implementation with a smaller dropout rate (0.1) at non-expert layers and a larger rate (0.4) at expert layers yields performance improvements on smaller downstream tasks. The expert dropout protocol proves effective in preventing overfitting and enhancing model performance during fine-tuning.
 ![Expert droput](./images/regularization.png)
 
+## Distillation
 
-
+![Distillation](./images/distillation.png)
+Researchers showcase the model's ability to distill knowledge into a smaller, dense model equivalent to T5 Base, surpassing T5's scratch-trained performance. The distillation process retains over 97% reduction in parameters while preserving up to 30% of the original large model's performance gains. This suggests effective knowledge transfer from the expansive sparse model to a more compact one, facilitating widespread usage.
 
 
 
