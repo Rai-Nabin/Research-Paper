@@ -59,3 +59,23 @@ The switch transformer demonstrates remarkable improvements in speed and sample 
 
 ![multilingual](images/multilingual.png)
 While the trade-off for these gains involves the need for more machines, the largest model, Switch XXL, surpasses T5 XXXL in log perplexity and downstream tasks with more parameters and equivalent flops. Additionally, a trillion-parameter model is constructed, showing competitive performance with T5 XXXL despite fewer flops per token. However, it falls short of the Switch XXL model, emphasizing the importance of balancing parameters, heads, and layers for optimal performance. The paper concludes that having a vast number of parameters alone is not sufficient; thoughtful trade-offs are essential for achieving superior results in large language models.
+
+## Stabilizing Training
+
+**Selective precision**
+The paper addresses model instability during training with efficient bfloat16 precision, proposing a solution of selectively casting to float32 precision within a specific model section. This approach balances stability without the communication cost associated with float32 tensors, aligning with modern mixed precision strategies. By casting the router input to float32 precision and confining its use to local computations, the paper achieves nearly equal training speed to bfloat16 while avoiding the transmission of costly float32 tensors during communication operations. This strategy retains the stability benefits of float32 precision without incurring high communication costs.
+![selective precision](./images/selective-precision.png)
+
+**Smaller parameter initialization**
+Proper initialization is vital for successful training in deep learning, especially for the Switch Transformer. The paper advocates initializing weight matrices by sampling from a truncated normal distribution, with adjustments for scale. To counter instability, the default Transformer initialization scale is reduced by a factor of 10, significantly improving model quality and stability during training. This approach proves effective across models of different sizes, from a 223M parameter baseline to massive models exceeding one trillion parameters. The recommended initialization scheme enhances average model quality, minimizes variance across runs, and ensures stable training outcomes.
+![Parameter initialization](./images/param-initialization.png)
+
+**Regularization**
+The paper addresses overfitting challenges during fine-tuning in natural language processing tasks, particularly with Switch Transformers having significantly more parameters than baseline models. To mitigate overfitting, the authors propose "**expert dropout**," an approach involving increased dropout rates specifically within the experts' interim feed-forward computations. Unlike uniform dropout increases across all layers, a strategic implementation with a smaller dropout rate (0.1) at non-expert layers and a larger rate (0.4) at expert layers yields performance improvements on smaller downstream tasks. The expert dropout protocol proves effective in preventing overfitting and enhancing model performance during fine-tuning.
+![Expert droput](./images/regularization.png)
+
+
+
+
+
+
