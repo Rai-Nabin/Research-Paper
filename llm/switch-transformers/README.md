@@ -1,3 +1,7 @@
+# Abstract 
+In deep learning, models typically reuse the same parameters for all inputs. Mixture
+of Experts (MoE) models defy this and instead select different parameters for each in-
+coming example. The result is a sparsely-activated model - with an outrageous number of parameters - but a constant computational cost. However, despite several notable successes of MoE, widespread adoption has been hindered by complexity, communication costs, and training instability. We address these with the introduction of the Switch Transformer. We simplify the MoE routing algorithm and design intuitive improved models with reduced communication and computational costs. Our proposed training techniques mitigate the instabilities, and we show large sparse models may be trained, for the first time, with lower precision (bfloat16) formats. We design models based off T5-Base and T5-Large to obtain up to 7x increases in pre-training speed with the same computational resources.
 ## Overview
 
 
