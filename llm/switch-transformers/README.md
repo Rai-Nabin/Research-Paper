@@ -38,3 +38,13 @@ The idea behind the switch transformer is to have several specialized feed-forwa
 The crucial innovation lies in the **hard routing** aspect of the switch transformer. While the routing weights are soft, indicating probabilities, **they are hard-clipped to make a definitive decision on which feed-forward layer a token should be routed to**. This hard routing means that a token goes through only one specific feed-forward layer, eliminating the need for proportional routing through multiple layers.
 
 This hard routing mechanism is key to the switch transformer's efficiency. Unlike conventional transformers or mixture of experts models with soft routing, the switch **transformer's hard routing reduces the computation load**. This results in more efficient processing, allowing tokens to be directed to specialized feed-forward layers based on learned characteristics, ultimately improving overall model efficiency.
+## Model/Data/Expert - Parallelism
+
+![token routing](./images/routing.png)
+In the switch transformer, utilizing argmax routing for token assignment to feed-forward layers, the number of parameters is multiplied by four. However, each token incurs only one feed-forward layer, maintaining the computation per forward pass, and this is a key efficiency factor.
+
+This approach allows for significant scaling of the number of experts while keeping the computational load constant. Importantly, there's no need for data transfer between experts, enabling efficient sharding across multiple machines. This sharding is vital for handling the vast number of parameters in the model.
+![parallelism](./images/parallelism.png)
+The model can be efficiently sharded using techniques like data parallelism, model parallelism, or a combination of both. Data parallelism involves distributing data to different cores, while model parallelism splits the model across cores. Switch transformer employs expert and data parallelism, where each expert processes specific data independently, minimizing communication costs and achieving scalable training.
+
+The paper further discusses various sharding techniques, illustrating how model and data parallelism can be combined for efficient distributed training. It emphasizes the advantages of expert and data parallelism in the switch transformer, enabling the model to handle a large number of parameters while maintaining computational efficiency.
