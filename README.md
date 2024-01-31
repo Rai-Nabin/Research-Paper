@@ -15,7 +15,7 @@ Welcome to my curated list of research papers in the field of Artificial Intelli
 ## Large Language Model
 | S.N | Paper | Resources | Year of Release | Note  |
 | ---- | ---- | ---- | :--: | ---- |
-| 1 | **Switch Transformers**: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity | - [Paper](https://arxiv.org/pdf/2101.03961.pdf)<br>- [Video](https://www.youtube.com/watch?v=iAR8LkkMMIM&ab_channel=YannicKilcher) | 2022 | [link](./llm/switch-transformers/README.md) |
+| 1 | **Switch Transformers**: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity | - [Paper](https://arxiv.org/pdf/2101.03961.pdf)<br>- [Video (Yannic)](https://www.youtube.com/watch?v=iAR8LkkMMIM&ab_channel=YannicKilcher) | 2022 | [Yannic](./llm/switch-transformers/README.md) |
 |  |  |  |  |  |
 
 ## Contribution Guidelines
