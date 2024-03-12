@@ -2,11 +2,7 @@
 
 Welcome to my curated list of research papers in the field of Artificial Intelligence. Explore cutting-edge papers on various AI topics.
 
-## Table of Contents
-| S.N | Topics |
-| ---- | ---- |
-| 1 | [Computer Vision](#computer-vision) |
-| 2 | [Large Language Model](#large-language-model) |
+
 ## Computer Vision
 | S.N | Paper | Resources | Year of Release | Note  |
 | ---- | ---- | ---- | ---- | ---- |
@@ -16,7 +12,7 @@ Welcome to my curated list of research papers in the field of Artificial Intelli
 | S.N | Paper | Resources | Year of Release | Note  |
 | ---- | ---- | ---- | :--: | ---- |
 | 1 | **Switch Transformers**: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity | - [Paper](https://arxiv.org/pdf/2101.03961.pdf)<br>- [Video (Yannic)](https://www.youtube.com/watch?v=iAR8LkkMMIM&ab_channel=YannicKilcher) | 2022 | [Yannic](./llm/switch-transformers/README.md) |
-|  |  |  |  |  |
+| 2 | **Mistral 7B** | - [Paper](https://arxiv.org/pdf/2310.06825.pdf) | 2023 |  |
 
 ## Contribution Guidelines
 Feel free to contribute by adding new papers or suggesting improvements. 
